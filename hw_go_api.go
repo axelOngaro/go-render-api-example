@@ -15,7 +15,7 @@ func main() {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "10000"
 	}
 	if err := router.Run(":" + port); err != nil {
 		log.Panicf("error: %s", err)
@@ -39,14 +39,14 @@ func CORSMiddleware() gin.HandlerFunc {
 }
 
 type simpleMessage struct {
-	Hello           string `json:"hello"`
+	Hello   string `json:"hello"`
 	Message string `json:"message"`
 }
 
 func myGetFunction(c *gin.Context) {
 	simpleMessage := simpleMessage{
-		Hello: "World!",
-		Message: "Subscribe to my channel!",
+		Hello:   "World!",
+		Message: "This is working fine, it's deployed finally!",
 	}
 
 	c.IndentedJSON(http.StatusOK, simpleMessage)
